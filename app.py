@@ -23,13 +23,17 @@ jwt=JWTManager(app);
 def home() :
    
     return render_template('index.html')
-@app.route("/signin")
+@app.route("/signin",methods=["GET","POST"])
 def signin():
-   return render_template('login.html')
+    if request.method == "POST" :
+       #print(request.form['username'])
+       return render_template('userhome.html')
+    return render_template('login.html')
 @app.route('/login',methods=["POST"])
 def login() :
 
     if request.method=='POST':
+
       username=request.args.get('username')
       password=request.args.get('password');
       if isValidLigin(username,password) :
@@ -37,8 +41,12 @@ def login() :
       else:
        return "Invalid Credentials"
    
-@app.route('/signup')
+@app.route('/signup',methods=["GET","POST"])
 def signup() :
+    if request.method == "POST":
+       user:User = User(request.form['fullname'],request.form['email'],request.form['username'],request.form['password']);
+       print(user)
+       return "User Created Successfully"+user.fullname
     return render_template('signup.html')
 @app.route('/register',methods=["POST"])
 def registerUser():

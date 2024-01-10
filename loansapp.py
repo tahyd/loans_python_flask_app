@@ -6,7 +6,7 @@ from flask_jwt_extended import jwt_required
 loansapp = Blueprint("loansapp",__name__);
 
 @loansapp.route("/check-eligibility",methods =["POST"])
-@jwt_required(locations=["headers"])
+#@jwt_required(locations=["headers"])
 def checkLoanEligibility() :
 
     loan_application = request.get_json();
@@ -15,25 +15,13 @@ def checkLoanEligibility() :
    
 
 def isEligibleForLoan(loan_application):
-     #scalar = StandardScaler();
-     
-     #scalar.fit([[90,80]])
-     #data = scalar.transform([[loan_application['applicantincome'],loan_application['amountrequired']]])
-     #data = scalar.fit_transform([[4500,3000]]); 
-
-     #p1 =data[0,0];
-     #p2 = data[0,1];
-     #print("+++++++++++++++")
-     #print(p1)
-     #print(p2)
-     #print("+++++++++++++++++++")
-     with open('scaler_reg.pkl','rb') as f1:
+   
+     with open('scaler.pkl','rb') as f1:
          scalar_model = pickle.load(f1);
-         data=scalar_model.transform([[4500,3000]])
+         data=scalar_model.transform([[loan_application['applicantincome'],loan_application['amountrequired']]])
          p1=data[0,0];
          p2=data[0,1];
-         print(p1)
-         print(p2)
+         
      with open('logistic_loan.pkl','rb') as f:
           
        
