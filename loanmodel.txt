@@ -1,0 +1,11 @@
+{
+    "gender":0,
+    "married":0,
+    "dependents":2,
+    "education":1,
+    "credithistory":1,
+    "propertyarea":1,
+    "applicantincome":30000,
+
+    "amountrequired":1000
+}
