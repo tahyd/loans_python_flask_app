@@ -69,8 +69,8 @@ pipeline {
         
          stage('Deploy') {
            steps {
-                //sh label: '', script: "docker run -d --name ${JOB_NAME} -p 9090:9090 ${img}"
-                echo 'abc'
+                sh label: '', script: "docker run -d --name ${JOB_NAME} --network=flaskapp_network -p 5000:5000 ${img}"
+               
                
           }
         }

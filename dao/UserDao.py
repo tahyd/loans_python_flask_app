@@ -7,7 +7,7 @@ import mysql.connector
 from models.User import User
 
 
-connection = mysql.connector.connect(host='localhost',user='root',password='root',database="flaskdb",port=3306)
+connection = mysql.connector.connect(host='192.168.0.101',user='root',password='root',database="flaskdb",port=3306)
 
 
 def createUserTable():
