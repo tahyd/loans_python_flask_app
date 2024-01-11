@@ -26,8 +26,13 @@ def home() :
 @app.route("/signin",methods=["GET","POST"])
 def signin():
     if request.method == "POST" :
-       #print(request.form['username'])
-       return render_template('userhome.html')
+       print(request.form['username'])
+       username = request.form['username']
+       password = request.form['password']
+       if isValidLigin(username,password) :
+        return render_template('userhome.html')
+       else :
+        return "Invalid Credentils"
     return render_template('login.html')
 @app.route('/login',methods=["POST"])
 def login() :
@@ -46,7 +51,8 @@ def signup() :
     if request.method == "POST":
        user:User = User(request.form['fullname'],request.form['email'],request.form['username'],request.form['password']);
        print(user)
-       return "User Created Successfully"+user.fullname
+       if save(user) :
+        return "Hi "+ user.fullname+" your data is scuccessfully store"
     return render_template('signup.html')
 @app.route('/register',methods=["POST"])
 def registerUser():
