@@ -7,9 +7,9 @@ import mysql.connector
 from models.User import User
 
 
-connection = mysql.connector.connect(host='localhost',user='root',password='root',database="flaskdb",port=3306)
+#connection = mysql.connector.connect(host='localhost',user='root',password='root',database="flaskdb",port=3306)
 
-
+connection = mysql.connector.connect(host='loans-flask-db.cra2cuaw4rxi.us-east-1.rds.amazonaws.com',user='root',password='Maddela12345',database="flaskdb",port=3306)
 def createUserTable():
     cursor = connection.cursor();
     cursor.execute('''drop table if exists user_tbl''')
