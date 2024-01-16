@@ -18,7 +18,7 @@ def createUserTable():
 def save(user:User):
     isUserCreated = False
     cursor =connection.cursor()
-    cursor.execute(''' insert into user_tbl(fullname,email,username,pasword) values(%s,%s,%s,%s)''',(user.fullname,user.email,user.username,user.password))
+    cursor.execute(''' insert into user_tbl(fullname,email,username,password) values(%s,%s,%s,%s)''',(user.fullname,user.email,user.username,user.password))
     
     
     connection.commit();
