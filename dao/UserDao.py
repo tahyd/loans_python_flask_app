@@ -13,12 +13,12 @@ connection = mysql.connector.connect(host='intac.c70gmwmye8yj.ap-southeast-2.rds
 def createUserTable():
     cursor = connection.cursor();
     cursor.execute('''drop table if exists user_tbl''')
-    cursor.execute('''CREATE TABLE user_tbl1(userid int primary key auto_increment,fullname varchar(200),email varchar(200),username varchar(20) unique,password varchar(20))''')
+    cursor.execute('''CREATE TABLE user_tbl(userid int primary key auto_increment,fullname varchar(200),email varchar(200),username varchar(20) unique,password varchar(20))''')
 
 def save(user:User):
     isUserCreated = False
     cursor =connection.cursor()
-    cursor.execute(''' insert into user_tbl1(fullname,email,username,password) values(%s,%s,%s,%s)''',(user.fullname,user.email,user.username,user.password))
+    cursor.execute(''' insert into user_tbl(fullname,email,username,password) values(%s,%s,%s,%s)''',(user.fullname,user.email,user.username,user.password))
     
     
     connection.commit();
@@ -31,7 +31,7 @@ def save(user:User):
 
 def find(username):
      cursor =connection.cursor()
-     cursor.execute(''' select * from user_tbl1 where username=%s ''',[(username)])
+     cursor.execute(''' select * from user_tbl where username=%s ''',[(username)])
      result = cursor.fetchone()
      if cursor.rowcount==1 :
       return User(result[1],result[2],result[3],result[4]);
