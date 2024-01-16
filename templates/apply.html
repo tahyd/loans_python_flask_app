@@ -26,11 +26,11 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          <span>Welcome {{username}}</span>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link navlink" aria-current="page" href="#">Home</a>
-              <a class="nav-link navlink" href="#">SignIn</a>
-              <a class="nav-link navlink" href="#">SingnUp</a>
+             
+              <a class="nav-link navlink" href="#">Logout</a>
              
             </div>
           </div>
@@ -59,7 +59,7 @@
                  <div class="loan-form">
 
 
-                    <form>
+                    <form action="apply" method="post">
                         <table class="table loan-table">
                           <!--
                               <tr>
@@ -80,7 +80,7 @@
                                   <tr>
                                     <td><label>No of Dependents</label></td>
                                     <td>
-                                        <select name="" id="">
+                                        <select name="dependents" id="">
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -92,7 +92,7 @@
                                   <tr>
                                     <td><label>Education</label></td>
                                     <td>
-                                        <select name="" id="">
+                                        <select name="education" id="">
                                             <option value="1">Graduate</option>
                                             <option value="0">Non-Graduate</option>
                                            
@@ -103,7 +103,7 @@
                                   <tr>
                                     <td><label>Credit History</label></td>
                                     <td>
-                                        <select name="" id="">
+                                        <select name="chistory" id="">
                                             <option value="1">Good</option>
                                             <option value="0">Poor</option>
                                            
@@ -114,7 +114,7 @@
                                   <tr>
                                     <td><label>Property Area</label></td>
                                     <td>
-                                        <select name="" id="">
+                                        <select name="p_area" id="">
                                             <option value="1">Urban</option>
                                             <option value="2">Semi-Urban</option>
                                             <option value="3">Rural</option>
@@ -125,11 +125,11 @@
 
                                   <tr>
                                     <td><label>Applicant Income</label></td>
-                                    <td><input type="number"></td>
+                                    <td><input type="number" name="income"></td>
                                   </tr>
                                   <tr>
                                     <td><label>Loan Amount Required</label></td>
-                                    <td><input type="number" name="" id=""></td>
+                                    <td><input type="number" name="amount" id=""></td>
                                   </tr>
                                   <tr>
                                    
@@ -152,8 +152,9 @@
 
                       
                       </form>
+                      {{message}}
                  </div>     
-             
+            
             </div>
 
             <div class="row">
