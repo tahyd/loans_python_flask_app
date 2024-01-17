@@ -28,7 +28,7 @@ stage('SonarQube analysis') {
  }
 
   withSonarQubeEnv('SonarQube-9.9.3') { // If you have configured more than one global server connection, you can specify its name
-      sh "sonar-scanner"
+      sh "${scannerHome}/bin/sonar-scanner"
     }
     }
    
