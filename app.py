@@ -57,7 +57,7 @@ def signup() :
        user:User = User(request.form['fullname'],request.form['email'],request.form['username'],request.form['password']);
        print(user)
        if save(user) :
-        return "Hi "+ user.fullname+" your data is scuccessfully store"
+        return "Hi "+ user.fullname+" your data is scuccessfully stored"
     return render_template('signup.html')
 @app.route('/register',methods=["POST"])
 def registerUser():
@@ -115,6 +115,9 @@ def apply() :
       
     return render_template('apply.html',username=username)
 
+@app.route('/logout')
+def logout() :
+   return render_template('index.html',logout_message='You are logged out successfully')
 
 @app.errorhandler(Exception)
 def handle_exception(e):
